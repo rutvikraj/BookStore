@@ -1,0 +1,49 @@
+jwt:
+  get:
+    token:
+      uri: /authenticate
+  secret: random-secret-123
+
+server:
+  error:
+    include-stacktrace: never
+
+spring:
+  application:
+    name: authorization-service
+
+zuul:
+  routes:
+    PRODUCT-SERVICE:
+      path: /product/**
+      service-id: PRODUCT-SERVICE
+      strip-prefix: false
+
+    CART-SERVICE:
+      path: /cart/**
+      service-id: CART-SERVICE
+      strip-prefix: false
+
+    VENDOR-SERVICE:
+      path: /vendor/**
+      service-id: VENDOR-SERVICE
+      strip-prefix: false
+
+    E-COMMERCE-PORTAL:
+      path: /ecommerce/**
+      service-id: E-COMMERCE-PORTAL
+      strip-prefix: false
+
+eureka:
+ instance:
+  hostname: localhost
+  prefer-ip-address: true
+  lease-expiration-duration-in-seconds: 20
+  lease-renewal-interval-in-seconds: 10
+ client:
+  register-With-Eureka: true
+  fetch-Registry: true
+  service-Url:
+   defaultZone: "http://localhost:8761/eureka/" 
+
+
