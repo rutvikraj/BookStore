@@ -1,0 +1,36 @@
+.login-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .vertical-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo-container {
+    background-color: #ffd867;
+  }
+  .logo-container img {
+    max-width: 400px;
+  }
+  
+  .btn-primary {
+    background-color: #003489;
+    border: #003489;
+  }
+  a {
+    color: #003489;
+  }
+  @media (max-width: 575.98px) {
+    .login-container {
+      grid-template-columns: 100%;
+    }
+    .logo-container {
+      display: none;
+    }
+  }
+  

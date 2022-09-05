@@ -1,0 +1,11 @@
+.product-card{
+    height: 20vw;
+    object-fit: cover;
+}
+
+@media (max-width : 900px){
+    .product-card{
+        height: auto;
+        object-fit: cover;
+    }
+}

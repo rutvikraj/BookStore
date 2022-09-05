@@ -1,0 +1,154 @@
+<!-- Header -->
+<app-header></app-header>
+
+<!-- Products -->
+<div class="container mt-5">
+    <div *ngIf="myproducts.length > 0; else notTrue">
+        <!-- </div> -->
+        <div *ngFor="let product of myproducts">
+
+            <div class="row">
+                <!-- <h1>this is </h1> -->
+                <div class="col-lg-7 mb-4">
+                    <div class="card p-2">
+                        <img src={{product.imageName}} class="card-img-top product-card" alt="...">
+
+                    </div>
+                </div>
+
+                <div class="col-lg">
+                    <div class="card-body">
+                        <h1 class="card-title">{{product.name}} <span class="badge badge-success">{{product.rating |
+                                number
+                                :'1.1-1'}} <i class="fas fa-star"></i></span></h1>
+                        <h2 class="card-text font-weight-bold mb-3 mt-3">Price: ₹{{product.price}}</h2>
+                        <span class="font-weight-bold"> Highlights: </span>
+                        <h5 class="card-text mt-3 mb-4" *ngFor="let productsdecription of productsdesc">
+                            <ul>
+                                <li>{{productsdecription}}</li>
+                            </ul>
+                        </h5>
+
+                        <hr>
+                        <h1>Vendor Details</h1>
+                        <div class="vendor" *ngFor="let vendor of myvendors">
+
+                            <p class="card-text">Vendor Name: {{vendor.vendorName}}</p>
+                            <p class="card-text" >Vendor Id: {{vendor.vendorId}}</p>
+                            <p class="card-text">Vendor Rating: {{vendor.rating}}</p>
+                            <p class="card-text">Delivery fee = &#8377;{{vendor.deliveryCharge}}</p>
+                            
+                            <!-- <p class="card-text">Expected Delivery Date: {{vendor.deliveryDate}}</p> 
+                            -->
+
+                            <div *ngIf="vendor.stocksInHand!=0; else elsepart">
+                                <p class="card-text">Stock Available = {{vendor.stocksInHand}} </p>
+                          
+                            <button class="btn btn-lg btn-block btn-primary mt-2" data-toggle="modal"
+                                attr.data-target="#cartmodel{{vendor.vendorId}}">
+                                Add To Cart
+                            </button>
+                        </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="cartmodel{{vendor.vendorId}}">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title" id="exampleModalLabel">Add to cart</h3>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <!-- <form #basicForm="ngForm" (submit)="getData(basicForm.value)" ngNativeValidate> -->
+                                            <form #basicForm="ngForm" (submit)="formSubmit()" ngNativeValidate>
+                                                <input type="text" hidden name="productId" class="form-control" 
+                                                    value="product.id" [(ngModel)]="product.id" required>
+                                                <div class="form-group">
+                                                    <label for="quantity">Quantity</label>
+                                                    <input type="number" name="quantity" class="form-control" min="1"
+                                                        [(ngModel)]="formData.quantity" required id="quan"
+                                                        #quan="ngModel" pattern="[0-9]+">
+                                                    <span *ngIf="quan.invalid" style="color:red">Quantity must be
+                                                        greater then 1</span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="zip">Zip Code</label>
+                                                    <input type="number" [(ngModel)]="formData.zipcode" name="zipcode"
+                                                    (click)="myvalue(product.id,vendor.vendorId)"
+                                                        class="form-control" id="zip" required #zip="ngModel"
+                                                        pattern="[0-9]{6}">
+                                                    <span *ngIf="zip.invalid && zip.touched" style="color:red">ZipCode
+                                                        must be 6 characters long.</span>
+                                                 
+                                                </div>
+
+                                                <button [disabled]="basicForm.invalid" type="submit"
+                                                    class="btn btn-lg btn-block btn-primary">Add To Cart</button>
+
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <ng-template #elsepart>
+                                <p class="card-text" style="color:red">Out of Stock</p>
+                                <button type="button" class="btn btn-warning mr-4 mt-3" data-toggle="modal"
+              attr.data-target="#wishmodel{{product.id}}">
+              Add To Wishlist
+            </button>
+
+
+            <div class="modal fade" id="wishmodel{{product.id}}">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add to wishlist</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+
+                  <div class="modal-body">
+                    <form #wishForm="ngForm" (submit)="wishData(wishForm.value)" ngNativeValidate>
+                      <input hidden type="text" name="productId" class="form-control" [(ngModel)]="product.id" required>
+                      <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" name="quantity" class="form-control" ngModel="1" required min="1"
+                        id="quan" #quan="ngModel">
+                        <span *ngIf="quan.invalid" style="color:red">Quantity must be greater then 1</span>
+                      </div>
+
+
+                      <button [disabled]="wishForm.invalid" type="submit" class="btn btn-lg btn-block btn-warning">Add To wishlist</button>
+
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+                            </ng-template>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <ng-template #notTrue>
+        <div class="vertical-center text-center">
+            <img src="assets/cart.png" class="img-fluid" alt="">
+            <P class="text-muted">Sorry, no results found! <br>
+                Please check the spelling or try searching for something else</P>
+            <a routerLink="/products"> <button class="btn btn-success mt-3 rounded-0 shadow-sm">GO TO
+                    HOMEPAGE</button> </a>
+        </div>
+    </ng-template>
+</div>

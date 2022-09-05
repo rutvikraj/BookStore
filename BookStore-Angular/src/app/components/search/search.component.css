@@ -1,0 +1,11 @@
+.vendor{
+    background-color: rgb(234, 228, 239);
+    border-radius: 4px;
+    margin-top: 1rem;
+    padding:1rem;
+}
+
+.card-text{
+    font-size: 16px;
+    font-weight: 500;
+}

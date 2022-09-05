@@ -1,0 +1,40 @@
+<!-- <p>login works!</p> -->
+<!-- <h1>This is login page</h1> -->
+<app-myheader></app-myheader>
+<div class="bootstrap-wrapper">
+    <div class="container" >
+        <div class="row mt20">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <mat-card class="my">
+                    <img src="../../../assets/login.png" alt="logo" width="250px" height="200px">
+                    <h1 class="text-center">Login Here!!</h1>
+                    <!-- {{ loginData | json }} -->
+
+                        <form (ngSubmit)="formSubmit()">
+                            <!-- Username Field -->
+                            <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>User Name</mat-label>
+                            
+                            <input [(ngModel)]="loginData.username" required matInput name="username"  placeholder="Enter here">
+                            <mat-hint>Valid User Name</mat-hint>
+                        </mat-form-field>
+                        
+                        <!-- Password Field -->
+                        <mat-form-field class="full-width" appearance="outline">
+                            <mat-label>User Password</mat-label>
+                            <input [(ngModel)]="loginData.password" required type="password" name="password"  matInput placeholder="Enter here">
+                        </mat-form-field>
+                        
+                        <div class="container text-center">
+                        <button type="submit" mat-raised-button color="primary">Login</button>
+                        <button type="reset" style="margin-left:20px;" mat-raised-button color="accent">Clear</button>
+                    </div>
+                </form>
+            </mat-card>
+                </div>
+            </div>    
+        </div>
+    </div>
+</div>
+<!-- <app-footer class="mt"></app-footer> -->

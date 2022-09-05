@@ -1,0 +1,23 @@
+.high{
+  position: static;
+
+}
+.main{
+  position: absolute;
+  padding-top: 220px;
+  padding-left: 150px;
+}
+
+.img{
+  margin-left: 200px;
+  height: 88vh;
+}
+
+h1{
+  font-size: 50px;
+  font-weight: bold;
+}
+p{
+  font-size: 20px;
+  /* color: orange; */
+}

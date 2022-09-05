@@ -1,0 +1,15 @@
+@import "~css-star-rating/css/star-rating";
+.modal-open {
+  overflow: unset;
+}
+
+.modal-backdrop {
+  display: none;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;  }
+
+.mt20{
+  margin-top: 50px;
+}

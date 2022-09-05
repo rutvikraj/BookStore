@@ -1,0 +1,21 @@
+<!-- <p>myheader works!</p> -->
+
+<!-- <button type="button" class="btn btn-primary">Primary</button> -->
+
+<!-- <button mat-raised-button color="warn">Primary</button> -->
+<mat-toolbar>
+  <button routerLink="/home" mat-icon-button class="example-icon text-light" aria-label="Example icon-button with menu icon">
+    <mat-icon>store</mat-icon>
+  </button>
+  <span class="text-light">BookStore</span>
+  <span class="example-spacer"></span>
+
+  <a [routerLink]="'/mylogin'" mat-icon-button class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon" class="text-light">
+    Login
+  </a>
+
+  <a mat-icon-button [routerLink]="'/about'" class="text-light">About</a>
+
+
+</mat-toolbar>

@@ -1,0 +1,59 @@
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .dropdown-menu{
+    background-color: #1e5994;
+    color: #fff;
+  }
+
+  .dropdown-menu a:hover{
+    background-color: #2a75e6;
+    color: #fff;
+  }
+
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    /* color: rgb(220, 53, 53); */
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 16px;
+  }
+
+  .nav-item a{
+    color:white;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 20px;
+  }
+
+  .nav-item a:hover{
+    color:#53ff40;
+  }

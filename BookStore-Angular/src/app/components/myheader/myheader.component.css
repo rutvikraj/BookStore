@@ -1,0 +1,14 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+a{
+  padding: 4px;
+}
+  a:hover{
+    color: #ff4043 !important;
+    text-decoration: none;
+  }
+  
+mat-toolbar{
+  background-color: slateblue;
+}

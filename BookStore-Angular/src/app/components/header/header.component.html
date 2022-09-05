@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-sm navbar-dark shadow-sm" style="background-color: slateblue;">
+  <a class="nav-link font-weight-bold h4 text-light" routerLink="/products">BookStore</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto mr-5">
+      <li class="nav-item">
+        <form class="form-inline my-2 my-lg-0 mr-5" #box="ngForm" (submit)="getValue(box.value)" ngNativeValidate>
+          <input class="form-control mr-sm-2" type="search" name="search" ngModel placeholder="Search Any Books..."
+            required aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto ml-5">
+      <li class="nav-item ml-5">
+        <a class="nav-link" routerLink="/products">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-expanded="false">
+          My Account
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a (click)="Logout()" class="dropdown-item" href="#">Logout</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cart"><i class="fas"></i> Cart <span
+            class="badge badge-primary">{{totalItem}}</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/wishlist">Wishlist</a>
+      </li>
+    </ul>
+
+  </div>
+</nav>

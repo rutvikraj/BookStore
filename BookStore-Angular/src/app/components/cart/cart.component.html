@@ -1,0 +1,89 @@
+<!-- Header -->
+<app-header></app-header>
+
+<!-- Cart -->
+<div class="container">
+    <div class="container mt-5">
+
+        <div>
+            <div class="row justify-content-md-center" *ngIf="cartdata.length > 0; else notTrue">
+                <div class="col-lg-6">
+                    <div class="row card">
+                        <div class="col-lg mb-4" *ngFor="let cart of cartdata">
+                            <div class="card">
+                                <img src={{cart.product.imageName}} class="card-img-top product-card" alt="...">
+
+                                <div class="card-body">
+                                    <h2 class="card-title px-2">{{cart.product.name}} <span
+                                            class="badge badge-success">{{cart.product.rating | number :
+                                            '1.1-1'}} <i class="fas fa-star"></i></span>
+                                    </h2>
+                                    <p class="card-text">{{cart.product.description}}</p>
+                                    <p class="card-text">&#8377;{{cart.product.price}}</p>
+                                    <button class="btn" (click)="clickStar(cart.product.id)">
+                                        <star-rating (starClickChange)="onClick($event,cart.product.id)"
+                                            [hoverEnabled]="true">
+                                        </star-rating>
+                                    </button>
+                                    <p class="card-text ">Zip Code: {{cart.zipCode}}</p>
+                                    <p class="card-text" name="my" [(ngModel)]="my">Quantity: {{cart.quantity}}
+                                        <!-- {{my}} -->
+
+                                    </p>
+                                    <!-- <button class="btn btn-warning" (click)="myfun()">Add 1 more</button> -->
+                                    <hr>
+
+                                    <h2>Vendor Details</h2>
+                                    <p class="card-text">Vendor Name: {{cart.vendor.vendorName}}</p>
+                                    <p class="card-text">Vendor Id: {{cart.vendor.vendorId}}</p>
+                                    <p class="card-text">Vendor Rating: {{cart.vendor.rating}}</p>
+                                    <p class="card-text">Delivery fee = &#8377;{{cart.vendor.deliveryCharge}}</p>
+                                    <p class="card-text">Expected Delivery Date: {{cart.deliveryDate}}</p>
+
+                                    <button (click)="deletebtn(cart.cartId)" class="btn btn-danger">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">Total = {{grandTotal + subTotal}} <span class="h6">(Sub Total +
+                                    Delivery Charge)</span></h2>
+
+                            <hr>
+                            <h3 class="card-title mb-2">Sub Total = &#8377;{{grandTotal}} </h3>
+                            <h3>Total Delivery fee = &#8377;{{subTotal}}</h3>
+
+                            <div *ngFor="let cart of cartdata">
+
+                                <hr>
+                                <p class="card-text">{{cart.product.name}} Price = &#8377;{{cart.product.price *
+                                    cart.quantity}} (Quantity {{cart.quantity}})</p>
+                                <p class="card-text">Delivery fee = &#8377;{{cart.vendor.deliveryCharge}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <ng-template #notTrue>
+                <div class="vertical-center text-center">
+                    <img src="assets/cart.png" class="img-fluid" alt="">
+                    <P class="text-muted">Your Shopping Bag Is Empty</P>
+                    <a routerLink="/products"> <button class="btn btn-success mt-3 rounded-0 shadow-sm">GO TO
+                            HOMEPAGE</button> </a>
+                </div>
+            </ng-template>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+<!-- <app-footer></app-footer> -->

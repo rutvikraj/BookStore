@@ -1,0 +1,49 @@
+<!-- Header -->
+<app-header></app-header>
+
+
+
+<!-- Cart -->
+<div class="container">
+    <div class="container mt-5">
+
+        <div>
+            <div class="row justify-content-md-center" *ngIf="wishlistdata.length > 0; else notTrue">
+                <div class="col-lg-4" *ngFor="let wishl of wishlistdata">
+
+                    <div class="card p-2">
+                        <a routerLink="/search/{{wishl.product.name}}"> <img src={{wishl.product.imageName}}
+                                class="card-img-top product-card" alt="...">
+                            <div class="card-body">
+                                <h3 class="card-title">{{wishl.product.name}} <span
+                                        class="badge badge-success">{{wishl.product.rating | number :
+                                        '1.1-1'}} <i class="fas fa-star"></i></span>
+                                </h3>
+                                <p class="card-text">{{wishl.product.description}}</p>
+                                <p class="card-text">&#8377;{{wishl.product.price}}</p>
+                                <p class="card-text">Quantity: {{wishl.quantity}}</p>
+                                <p class="card-text">Added To Wishlist Date: {{wishl.addedToWishlistDate}}</p>
+                            </div>
+                        </a>
+
+                        <button (click)="deletebtn(wishl.wishListId)" class="btn btn-danger">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #notTrue>
+                <div class="vertical-center text-center">
+                    <img src="assets/cart.png" class="img-fluid" alt="">
+                    <P class="text-muted">Your Wishlist Is Empty</P>
+                    <a routerLink="/products"> <button class="btn btn-success mt-3 rounded-0 shadow-sm">GO TO
+                            HOMEPAGE</button> </a>
+                </div>
+            </ng-template>
+        </div>
+
+
+
+    </div>
+
+
+</div>
