@@ -1,0 +1,33 @@
+jwt:
+  get:
+    token:
+      uri: /authenticate
+  secret: random-secret-123
+
+server:
+  error:
+    include-stacktrace: never
+  port: 8008
+
+spring:
+  application:
+    name: authorization-service
+  datasource:
+    platform: h2
+    url: jdbc:h2:mem:product_management
+  h2:
+    console:
+      enabled: true
+
+zuul:
+  routes:
+    product-services:
+      path: /product/**
+      service-id: product-service
+      strip-prefix: false
+
+    cart-services:
+      path: /cart/**
+      service-id: cart-service
+      strip-prefix: false
+           
