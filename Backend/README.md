@@ -1,5 +1,5 @@
 # BookStore-Microservices
-### To genrate jar files of each microservices use 'maven clean' on Spring Tool Suite or on to CMD.
+### To genrate jar files of each microservices use 'maven clean' then 'maven build'(with package) on Spring Tool Suite or on to CMD.
 
 ## Authentication Microservice
 - This microservice is used to Authenticate the User using JWT.
