@@ -9,4 +9,4 @@ A Simple Bookstore application from where user can add books to Cart or Wishlist
 * ### User Flow of the BookStore : 
     * This application allows user to login and add Books to cart from diffrent vendors. Also, If a book is out of stock then it can be added to whishlist.
     
-* NOTE -Also each backend and frontend contains README file to have a better idea!    
+* NOTE - Also each backend and frontend contains README file to have a better idea!    
